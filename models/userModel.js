@@ -13,9 +13,10 @@ const User = db.define('users',{
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             notEmpty: true,
-            isEmail: true
+            isEmail: true,
         }
     },
     password: {
@@ -33,11 +34,7 @@ const User = db.define('users',{
         }
     },
     refresh_token: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-        }
+        type: DataTypes.TEXT
     }
 },{
     freezeTableName: true
@@ -45,6 +42,6 @@ const User = db.define('users',{
 
 export default User;
 
-(async()=>{
-    await db.sync();
-})();
+// (async()=>{
+//     await db.sync();
+// })();
