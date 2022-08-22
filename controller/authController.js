@@ -60,6 +60,21 @@ export const register = async (req,res) => {
         res.status(400).json({msg: error.message});
     }
 }
-export const logout = (req,res) => {
-
+export const logout = async (req,res) => {
+    const refreshToken = req.cookies.Token
+    if(!refreshToken) return res.sendStatus(204);
+    const user = await User.findOne({
+        where:{
+            refresh_token: refreshToken
+        }
+    });
+    if(!user) return res.sendStatus(204)
+    const userId = user.id
+    await User.update({refresh_token: null},{
+        where:{
+            id: userId
+        }
+    });
+    res.clearCookie('Token');
+    return res.sendStatus(200)
 }
