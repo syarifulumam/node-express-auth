@@ -5,7 +5,7 @@ import config from './config/config.js'
 import authRouter from './routers/authRouter.js'
 
 const app = express();
-const port = config.port || 7003
+const port = config.port || 5000
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(cookieParser());
