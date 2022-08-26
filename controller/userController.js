@@ -1,9 +1,9 @@
-export const getUsers = (res,req) => {
+export const getUsers = (req,res) => {
 
 }
-export const updateUser = (res,req) => {
+export const updateUser = (req,res) => {
     
 }
-export const deleteUser = (res,req) => {
+export const deleteUser = (req,res) => {
     
 }
